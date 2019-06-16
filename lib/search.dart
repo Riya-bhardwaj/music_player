@@ -3,7 +3,72 @@ import 'package:flutter/material.dart';
 class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    Widget image(String image){
+      return  Expanded(
+        flex: 1,
+        child: Container(
+          width: 25,
+          height: 55,
+          decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            image: DecorationImage(
+              image: AssetImage(image),
+            ),
+          ),
+        ),
+      );
+    }
+    Widget text(String text){
+     return Expanded(
+        flex: 3,
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 15),
+        ),
+      );
+    }
+    Widget timage( String image)
+    { return Card(
+        elevation: 5.0,
+        child: Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              shape: BoxShape.rectangle,
+               image: DecorationImage(
+               fit: BoxFit.fill,
+            image: AssetImage(image)),
+          ),
+         ),
+      );
+      
+    }
+
+    return Scaffold(drawer: Drawer(
+      child: Column(
+        children: <Widget>[
+          AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.blue[900],
+            title: Text(
+              "Choose",
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20,
+                  color: Colors.white),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "Home",
+              style: TextStyle(fontSize: 15),
+            ),
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Search()));
+            },
+          )
+        ],
+      ),
+    ),appBar: AppBar(backgroundColor: Colors.blue[900],),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.all(10),
@@ -13,9 +78,9 @@ class Search extends StatelessWidget {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    Expanded(
-                      child: Icon(Icons.list),
-                    ),
+                    //Expanded(
+                      //child: Icon(Icons.list),
+                    //),
                     SizedBox(
                       width: 30,
                     ),
@@ -53,58 +118,17 @@ class Search extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: <Widget>[
-                      Card(
-                        elevation: 5.0,
-                        child: Container(height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(fit: BoxFit.fill,
-                                  image: AssetImage("assets/sin4.jpeg"))),
-                        ),
+                      timage("assets/sin4.jpeg"),
+                      SizedBox(
+                        width: 5,
                       ),
-                      SizedBox(width: 5,),
-                      Card(
-                        elevation: 5.0,
-                        child: Container(height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(fit: BoxFit.fill,
-                                  image: AssetImage("assets/sin1.jpeg"))),
-                        ),
+                      timage("assets/sin1.jpeg"),
+                      SizedBox(
+                        width: 5,
                       ),
-                      SizedBox(width: 5,),
-                      Card(
-                        elevation: 5.0,
-                        child: Container(height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(fit: BoxFit.fill,
-                                  image: AssetImage("assets/sin.jpeg"))),
-                        ),
-                      ),
-                      Card(
-                        elevation: 5.0,
-                        child: Container(height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(fit: BoxFit.fill,
-                                  image: AssetImage("assets/sin4.jpeg"))),
-                        ),
-                      ),
-                      Card(
-                        elevation: 5.0,
-                        child: Container(height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(fit: BoxFit.fill,
-                                  image: AssetImage("assets/sin4.jpeg"))),
-                        ),
-                      ),
+                      timage("assets/sin.jpeg"),
+                      timage("assets/sin4.jpeg"),
+                      timage("assets/sin4.jpeg"),
                     ],
                   ),
                 ),
@@ -124,18 +148,19 @@ class Search extends StatelessWidget {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 25,
-                            height: 55,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin.jpeg"),
-                              ),
-                            ),
-                          ),
+                       image("assets/sin.jpeg"),
+                        SizedBox(
+                          width: 5,
                         ),
+                       text("Arijit Singh")
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: <Widget>[
+                       image("assets/sin1.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
@@ -153,28 +178,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 25,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin1.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/sin4.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -182,28 +190,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 30,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin4.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/sin1.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -211,28 +202,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 25,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin1.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/sin.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -240,28 +214,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 25,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/sin4.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -269,28 +226,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 30,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin4.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/sin1.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -298,28 +238,11 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 25,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/sin1.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/song.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
                       ],
                     ),
                     SizedBox(
@@ -327,57 +250,12 @@ class Search extends StatelessWidget {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/song.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        image("assets/song.jpeg"),
                         SizedBox(
                           width: 5,
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assets/song.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            "Arijit Singh",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        text("Arijit Singh"),
+                        
                       ],
                     ),
                   ],

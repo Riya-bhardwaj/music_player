@@ -5,6 +5,7 @@ import 'package:musicplayer/fav.dart';
 import 'package:musicplayer/first.dart';
 import 'package:musicplayer/login.dart';
 import 'package:musicplayer/popular.dart';
+import 'package:musicplayer/recent.dart';
 import 'package:musicplayer/search.dart';
 
 class Home extends StatefulWidget {
@@ -58,6 +59,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
           IconButton(icon: Icon(Icons.search), onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder:(BuildContext context)=>Search()));
+          }),
+          IconButton(icon: Icon(Icons.audiotrack), onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Recent()));
           }),
           IconButton(icon: Icon(Icons.add_box), onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder:(BuildContext context)=>Favourite()));

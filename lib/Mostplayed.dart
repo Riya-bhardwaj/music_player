@@ -7,6 +7,8 @@ class Mostplayed extends StatefulWidget {
 }
 
 class _MostplayedState extends State<Mostplayed> {
+  bool fav=false;
+  bool star=false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,10 +25,10 @@ class _MostplayedState extends State<Mostplayed> {
                   Container(
                     height: 300,
                     width: 300,
-                    decoration: BoxDecoration(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(5.0)),
                       image: DecorationImage(
                         fit: BoxFit.fill,
-                        image: AssetImage("assets/song1.jpeg"),
+                        image: NetworkImage("https://www.partymap.in/arijitsingh/arijitsingh.jpg")
                       ),
                     ),
                   ),
@@ -111,35 +113,44 @@ class _MostplayedState extends State<Mostplayed> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Icon(
-                        Icons.favorite,
-                        color: Colors.pink,
+                  child: IconButton(
+                      icon: Icon(
+                        fav ? Icons.favorite : Icons.favorite_border,
+                        color: fav ? Colors.pink : Colors.grey,
                       ),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text("Add to favourite")
-                    ],
-                  ),
+                      onPressed: () {
+                        setState(() {
+                          fav = !fav;
+                        });
+                      }),
                 ),
                 Expanded(
-                  child: Column(
-                    children: <Widget>[
-                      Icon(Icons.star),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      Text("Add to music"),
-                    ],
-                  ),
+                    child: IconButton(
+                        icon: Icon(star ? Icons.star : Icons.star_border,
+                            color: star ? Colors.pink : Colors.grey),
+                        onPressed: () {
+                          setState(() {
+                            star = !star;
+                          });
+                        }))
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 15,
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text("Add to favourite"),
+                ),
+                Expanded(
+                  child: Text("Add to Music"),
                 ),
               ],
             ),
-            SizedBox(
-              height: 10,
-            )
+            SizedBox(height: 20),
           ]),
         ),
       ),

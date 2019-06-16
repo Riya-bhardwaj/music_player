@@ -1,11 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:musicplayer/body.dart';
+import 'package:musicplayer/search.dart';
 
 class Favourite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Widget fimage(String image)
+    {
+      return Card(
+        elevation: 5.0,
+        child: Container(
+          height: 170,
+          width: 170,
+          decoration: BoxDecoration(
+            borderRadius:
+            BorderRadius.all(Radius.circular(5.0)),
+            shape: BoxShape.rectangle,
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(image),
+            ),
+          ),
+        ),
+      );
+    }
+    Widget timage(String image){
+      return Card(
+        elevation: 5.0,
+        child: Container(
+          height: 130,
+          width: 150,
+          decoration: BoxDecoration(
+              borderRadius:
+              BorderRadius.all(Radius.circular(5.0)),
+              shape: BoxShape.rectangle,
+              image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(image))),
+        ),
+      );
+    }
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.blue[900],
+              title: Text(
+                "Choose",
+                style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 20,
+                    color: Colors.white),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                "Home",
+                style: TextStyle(fontSize: 15),
+              ),
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Search()));
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
-        leading: Icon(Icons.list),
+        backgroundColor: Colors.blue[900],
+        //leading: Icon(Icons.list),
         centerTitle: true,
         title: Text(
           "Favourite",
@@ -46,20 +110,7 @@ class Favourite extends StatelessWidget {
                   children: <Widget>[
                     Column(
                       children: <Widget>[
-                        Card(
-                          elevation: 5.0,
-                          child: Container(
-                            height: 170,
-                            width: 170,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/song2.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        fimage("assets/song2.jpeg"),
                         SizedBox(
                           height: 10,
                         ),
@@ -81,20 +132,7 @@ class Favourite extends StatelessWidget {
                     ),
                     Column(
                       children: <Widget>[
-                        Card(
-                          elevation: 5.0,
-                          child: Container(
-                            height: 170,
-                            width: 170,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/pic2.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        fimage("assets/pic2.jpeg"),
                         SizedBox(
                           height: 10,
                         ),
@@ -116,20 +154,7 @@ class Favourite extends StatelessWidget {
                     ),
                     Column(
                       children: <Widget>[
-                        Card(
-                          elevation: 5.0,
-                          child: Container(
-                            height: 170,
-                            width: 170,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage("assets/pic3.jpeg"),
-                              ),
-                            ),
-                          ),
-                        ),
+                        fimage("assets/pic3.jpeg"),
                         SizedBox(
                           height: 10,
                         ),
@@ -163,41 +188,15 @@ class Favourite extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: <Widget>[
-                    Card(
-                      elevation: 5.0,
-                      child: Container(
-                        height: 130,
-                        width: 150,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            image: DecorationImage(fit: BoxFit.fill,
-                                image: AssetImage("assets/sin4.jpeg"))),
-                      ),
+                    timage("assets/sin4.jpeg"),
+                    SizedBox(
+                      width: 5,
                     ),
-                SizedBox(width: 5,),
-                Card(
-                  elevation: 5.0,
-                  child: Container(
-                    height: 130,
-                    width: 150,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(fit: BoxFit.fill,
-                            image: AssetImage("assets/sin1.jpeg"))),
-                  ),
-                ),
-                SizedBox(width: 5.0,),
-                Card(
-                  elevation: 5.0,
-                  child: Container(
-                    height: 130,
-                    width: 150,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        image: DecorationImage(fit: BoxFit.fill,
-                            image: AssetImage("assets/sin.jpeg"))),
-                  ),
-                ),
+                    timage("assets/sin1.jpeg"),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    timage("assets/sin.jpeg"),
                   ],
                 ),
               )
